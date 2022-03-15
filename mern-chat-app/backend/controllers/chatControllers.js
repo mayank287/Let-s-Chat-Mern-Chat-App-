@@ -1,6 +1,12 @@
+
+//  ----------------------------------- Chat Controllers ------------------------------ //
+
+
 const asyncHandler = require("express-async-handler");
 const Chat = require("../models/chatModel");
 const User = require("../models/userModel");
+
+
 
 //@description     Create or fetch One to One Chat
 //@route           POST /api/chat/
@@ -201,3 +207,5 @@ module.exports = {
   addToGroup,
   removeFromGroup,
 };
+
+

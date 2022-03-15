@@ -2,6 +2,9 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/userModel.js");
 const asyncHandler = require("express-async-handler");
 
+
+//  ----------------------------------- Authenticate The User ------------------------------ //
+
 const protect = asyncHandler(async (req, res, next) => {
   let token;
 
@@ -31,3 +34,6 @@ const protect = asyncHandler(async (req, res, next) => {
 });
 
 module.exports = { protect };
+
+
+//  -----------------------------------  Authenticate The User ------------------------------ //

@@ -163,7 +163,7 @@ function SideDrawer() {
         </Tooltip>
         <div>
           <Menu>
-            {/* <Stack align='center' direction='row'> */}
+       
 
             <SunIcon color={darktheme ? "white" : "black"} />
             <Switch size='lg' onChange={() => setDarktheme(!darktheme)}
@@ -172,7 +172,7 @@ function SideDrawer() {
 
 
 
-            {/* </Stack> */}
+         
             <Tooltip label="Notifications" hasArrow placement="bottom-end">
               <MenuButton p={1}>
 
@@ -251,13 +251,11 @@ function SideDrawer() {
                 mr={2}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                // bg={darktheme ? "rgb(45,55,72)" : "white"}
+               
                 color={darktheme ? "white" : "black"}
               />
               <Button onClick={handleSearch} bg={darktheme ? "rgb(45,55,72)" : "white"}
                 color={darktheme ? "white" : "black"}
-                             
-                  bg = {darktheme ? "#232e41" : "#E7DCC6"}
                 _placeholder={{ color: 'red.500' }}
                 _hover={darktheme ? { background: "rgb(45,55,72)" } : { background: "white" }} >Go</Button>
             </Box>

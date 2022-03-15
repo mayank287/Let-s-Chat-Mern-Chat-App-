@@ -10,31 +10,33 @@ const cloudinary = require("cloudinary");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 
+
 dotenv.config();
 connectDB();
 const app = express();
 
+
+
+// -----------------------------------  Use Some Important Functions  --------------------------------//
 app.use(express.json()); // to accept json data
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
 
-// app.get("/", (req, res) => {
-//   res.send("API Running!");
-// });
-
-
-// Routes
+//  ----------------------------------------Routes -------------------------------------------------//
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/Message", messageRoutes);
-//  Cloudnairy config
 
+
+// -------------------------------------- Cloudinary config --------------------------------------------------//
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
-// --------------------------deployment------------------------------
+
+
+// --------------------------deployment------------------------------ ---------- //
 
 const __dirname1 = path.resolve();
 
@@ -50,9 +52,9 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-// --------------------------deployment------------------------------
 
-// Error Handling middlewares
+
+// ---------------------------------- Error Handling middlewares ----------------------------
 app.use(notFound);
 app.use(errorHandler);
 

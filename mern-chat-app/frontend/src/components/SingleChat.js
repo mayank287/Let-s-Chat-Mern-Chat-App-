@@ -36,7 +36,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [Play, { stop }] = useSound(Notification);
   
   
-  // -------------------------------- controlling Use State -------------------------
+  // -------------------------------- controlling Use State --------------------------------//
 
 
   const [messages, setMessages] = useState([]);
@@ -48,7 +48,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
  
   const toast = useToast();
 
-  //  --------------------------------------------------- Default Option ---------------
+  //  --------------------------------------------------- Default Option ---------------------------//
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -94,7 +94,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     }
   };
 
-  //  -------------------------------------------- Socket.io deployment
+  //  -------------------------------------------- Socket.io deployment  ----------------------------//
   useEffect(() => {
     socket = io(ENDPOINT);
     socket.emit("setup", user);

@@ -62,7 +62,7 @@ const Signup = () => {
 
     try {
 
-      // myform.set("pics", pic);
+     
 
       const config = { headers: { "Content-Type": "multipart/form-data" } };
 
@@ -166,13 +166,7 @@ const Signup = () => {
       <FormControl id="pic">
         <FormLabel>Upload your Picture</FormLabel>
 
-        {/* <Input
-          type="file"
-          p={1.5}
-          accept="image/*"
-          onChange={registerDataChange}
-        
-          /> */}
+       
          <Box   d="flex">
            
            <Avatar

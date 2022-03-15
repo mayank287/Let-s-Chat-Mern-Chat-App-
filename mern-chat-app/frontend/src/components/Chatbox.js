@@ -4,7 +4,7 @@ import SingleChat from "./SingleChat";
 import { ChatState } from "../Context/ChatProvider";
 
 const Chatbox = ({ fetchAgain, setFetchAgain }) => {
-  const { selectedChat ,darktheme} = ChatState();
+  const { selectedChat, darktheme } = ChatState();
 
   return (
     <Box
@@ -12,12 +12,11 @@ const Chatbox = ({ fetchAgain, setFetchAgain }) => {
       alignItems="center"
       flexDir="column"
       p={3}
-      // bg="white"
       w={{ base: "100%", md: "68%" }}
       borderRadius="lg"
       borderWidth="1px"
-      bg = {darktheme ? "#1A202C" : "white"}
-      color = {darktheme ? "white" : "black"}
+      bg={darktheme ? "#1A202C" : "white"}
+      color={darktheme ? "white" : "black"}
     >
       <SingleChat fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
     </Box>

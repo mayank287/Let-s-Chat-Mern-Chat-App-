@@ -1,3 +1,7 @@
+
+
+//  ----------------------------------- Generating Jwt Tokens------------------------------ //
+
 const jwt = require("jsonwebtoken");
 
 const generateToken = (id) => {
