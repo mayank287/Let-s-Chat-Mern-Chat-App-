@@ -20,9 +20,9 @@ import { Tooltip } from "@chakra-ui/tooltip";
 import { BellIcon, ChevronDownIcon, SunIcon, MoonIcon } from "@chakra-ui/icons";
 import { Avatar } from "@chakra-ui/avatar";
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { Switch, Stack } from '@chakra-ui/react'
+import { Select} from '@chakra-ui/react'
 import { useToast } from "@chakra-ui/toast";
 import ChatLoading from "../ChatLoading";
 import { Spinner } from "@chakra-ui/spinner";
@@ -62,6 +62,11 @@ function SideDrawer() {
     localStorage.removeItem("userInfo");
     history.push("/");
   };
+  useEffect(() => {
+    localStorage.setItem("theme",darktheme)
+  
+    
+  }, [darktheme])
 
   const handleSearch = async () => {
     if (!search) {
@@ -164,11 +169,11 @@ function SideDrawer() {
         <div>
           <Menu>
        
-
-            <SunIcon color={darktheme ? "white" : "black"} />
-            <Switch size='lg' onChange={() => setDarktheme(!darktheme)}
-            />
-            <MoonIcon color={darktheme ? "white" : "black"} />
+          <Select onChange={(e) =>     setDarktheme(e.target.value == "true" ? true : false)} bg={darktheme ? "#2D3748" : "white"} color = {darktheme ? "white" : "black"}>
+              <option value='false' style={{ background: darktheme ? "#2D3748" : "white" }}>Light</option>
+              <option value='true' selected = {darktheme ? "selected" : ""} style={{ background: darktheme ? "#2D3748" : "white" }}  >Dark</option>
+         
+            </Select>
 
 
 

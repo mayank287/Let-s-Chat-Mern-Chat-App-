@@ -2,13 +2,13 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 const ChatContext = createContext();
-
+const setthemestate = localStorage.getItem("theme") === "true" ? true : false;
 const ChatProvider = ({ children }) => {
   const [selectedChat, setSelectedChat] = useState();
   const [user, setUser] = useState();
   const [notification, setNotification] = useState([]);
   const [chats, setChats] = useState();
-  const [darktheme,setDarktheme] = useState(false);
+  const [darktheme,setDarktheme] = useState(setthemestate);
 
   const history = useHistory();
 
