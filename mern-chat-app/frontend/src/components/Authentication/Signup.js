@@ -104,7 +104,7 @@ const Signup = () => {
           
         }
       };
-      console.log(picavatar);
+  
       reader.readAsDataURL(e.target.files[0])
     };
 

@@ -27,6 +27,7 @@ import { Avatar } from "@chakra-ui/avatar";
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
+import checkPageStatus from "./userAvatar/pagestatuscheck";
 const ENDPOINT = "https://lets-chat-mern-app.herokuapp.com"; 
 var socket, selectedChatCompare;
 
@@ -45,7 +46,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [socketConnected, setSocketConnected] = useState(false);
   const [typing, setTyping] = useState(false);
   const [istyping, setIsTyping] = useState(false);
- 
+  const [desktopnotify,setdesktopnotify] = useState({});
   const toast = useToast();
 
   //  --------------------------------------------------- Default Option ---------------------------//
@@ -93,6 +94,11 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       });
     }
   };
+  useEffect(() =>{
+
+
+    checkPageStatus(desktopnotify);
+  },[desktopnotify])
 
   //  -------------------------------------------- Socket.io deployment  ----------------------------//
   useEffect(() => {
@@ -102,7 +108,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     socket.on("typing", () => setIsTyping(true));
     socket.on("stop typing", () => setIsTyping(false));
 
-    // eslint-disable-next-line
   }, []);
 
   const sendMessage = async (event) => {
@@ -148,24 +153,23 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     fetchMessages();
 
     selectedChatCompare = selectedChat;
-    // eslint-disable-next-line
+ 
   }, [selectedChat]);
 
   useEffect(() => {
     socket.on("message recieved", (newMessageRecieved) => {
       if (
-        !selectedChatCompare || // if chat is not selected or doesn't match current chat
+        !selectedChatCompare || 
         selectedChatCompare._id !== newMessageRecieved.chat._id
       ) {
         if (!notification.includes(newMessageRecieved)) {
+          setdesktopnotify(newMessageRecieved);
+          
           setNotification([newMessageRecieved, ...notification]);
           setFetchAgain(!fetchAgain);
           { Play() };
 
-          // let myVar = setInterval(myTimer, 1000);
-          // function myTimer() {
-          //  {stop()}
-          // }
+
 
 
 
@@ -227,7 +231,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             {messages &&
               (!selectedChat.isGroupChat ? (
                 <>
-                {console.log(selectedChat)}
+         
                    <Avatar
                   size="md"
                   cursor="pointer"
