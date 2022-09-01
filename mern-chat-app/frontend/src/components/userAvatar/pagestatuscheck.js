@@ -1,3 +1,7 @@
+import favicon from "../../../public/favicon.ico"
+
+
+
 export default function checkPageStatus(props) {
     if(!("Notification" in window)) {
       alert("This browser does not support system notifications!")
@@ -15,7 +19,7 @@ export default function checkPageStatus(props) {
 };
 function sendNotification(props) {
     const notification = new Notification(`New Message From ${props.sender?.name == undefined ? "Welcome To Let's Chat App" : props.sender?.name}`, {
-       icon: `${props.sender?.pic == undefined ? "https://cdn-icons-png.flaticon.com/512/733/733585.png" : props.sender?.pic}`,
+       icon: `${props.sender?.pic == undefined ? favicon : props.sender?.pic}`,
       body: `${props.content == undefined ? "Hope U Like This App Made By Mayank": props.content}`
     })
     notification.onclick = ()=> function() {
