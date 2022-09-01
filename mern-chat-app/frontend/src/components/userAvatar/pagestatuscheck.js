@@ -1,4 +1,4 @@
-import favicon from "../../../public/favicon.ico"
+import favicon from "../../animations/favicon.ico"
 
 
 
